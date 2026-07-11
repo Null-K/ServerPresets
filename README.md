@@ -83,7 +83,7 @@ The built jar file will be located in `build/libs/ServerPresets-1.0.0.jar`
 
 ## Compatibility
 
-- **Minecraft**: 1.26.1.2
+- **Minecraft**: 26.1.2
 - **Fabric Loader**: 0.19.3+
 - **Fabric API**: 0.154.2+
 - **Java**: 25+
