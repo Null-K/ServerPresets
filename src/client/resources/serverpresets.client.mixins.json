@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.puddingkc.serverpresets.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"ServerListMixin",
+		"JoinMultiplayerScreenMixin",
+		"ServerSelectionListEntryMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
