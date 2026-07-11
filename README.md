@@ -13,7 +13,7 @@ A Minecraft Fabric mod that pins preset servers to the top of your multiplayer s
 
 ## Installation
 
-1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 1.26.1.2
+1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 26.1.2
 2. Download the latest release from [Releases](https://github.com/Null-K/ServerPresets/releases)
 3. Place the mod jar file in your `.minecraft/mods` folder
 4. Launch the game
