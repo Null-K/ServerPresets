@@ -41,3 +41,6 @@ logs/
 # Local files
 *.local
 local.properties
+
+# Extracted Minecraft sources
+net/
