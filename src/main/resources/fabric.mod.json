@@ -11,7 +11,7 @@
 		"homepage": "https://github.com/Null-K",
 		"sources": "https://github.com/Null-K/ServerPresets"
 	},
-	"license": "ARR",
+	"license": "MIT",
 	"icon": "assets/serverpresets/icon.png",
 	"environment": "*",
 	"entrypoints": {

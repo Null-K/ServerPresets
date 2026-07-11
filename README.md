@@ -90,4 +90,4 @@ The built jar file will be located in `build/libs/ServerPresets-1.0.0.jar`
 
 ## License
 
-All Rights Reserved (ARR)
+MIT
