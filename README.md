@@ -132,7 +132,7 @@ This mod implements its features through Mixins that intercept:
 ./gradlew clean build
 ```
 
-The built jar file will be located in `build/libs/ServerPresets-1.0.0.jar`
+The built jar file will be located in `build/libs/ServerPresets-1.1.0.jar`
 
 ## Compatibility
 
