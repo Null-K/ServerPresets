@@ -10,6 +10,7 @@ A Minecraft Fabric mod that pins preset servers to the top of your multiplayer s
 - Automatic deduplication: duplicate servers with the same IP are removed
 - Players can freely manage their own servers (but cannot move them above preset servers)
 - Configure server resource pack policy (Prompt/Enabled/Disabled)
+- Load preset servers from a remote URL (HTTP/HTTPS), with automatic merging of local and remote lists
 
 ## Installation
 
@@ -56,6 +57,59 @@ Configuration file location: `config/serverpresets.json`
   - `PROMPT`: Ask the player (default)
   - `ENABLED`: Always accept resource packs
   - `DISABLED`: Always decline resource packs
+
+## Remote Server List
+
+Preset servers can also be loaded from a remote URL, which is useful for managing the server list across multiple clients from a single source.
+
+### Enabling Remote Loading
+
+Add the following fields to `config/serverpresets.json`:
+
+```json
+{
+  "presetServers": [
+    {
+      "name": "Local Server",
+      "ip": "localhost",
+      "resourcePackPolicy": "PROMPT"
+    }
+  ],
+  "remoteUrl": "https://example.com/servers.json",
+  "enableRemote": true
+}
+```
+
+- `remoteUrl`: The URL of the remote server list (HTTP or HTTPS). Leave empty to disable.
+- `enableRemote`: Set to `true` to enable remote loading, `false` to disable (default).
+
+### Remote JSON Format
+
+The remote URL must return JSON in the following format:
+
+```json
+{
+  "servers": [
+    {
+      "name": "Remote Server 1",
+      "ip": "play.example.net",
+      "resourcePackPolicy": "ENABLED"
+    },
+    {
+      "name": "Remote Server 2",
+      "ip": "mc.example.com",
+      "resourcePackPolicy": "PROMPT"
+    }
+  ]
+}
+```
+
+### Behavior
+
+- The mod loads the local config first, then merges the remote list on top of it (local + remote).
+- The remote list is fetched once on each game startup.
+- If remote loading fails (network error, invalid JSON, etc.), the mod falls back to the local list and startup is not affected.
+- Request timeouts: 10s connect, 15s read. HTTP redirects are followed automatically.
 
 ## Technical Details
 

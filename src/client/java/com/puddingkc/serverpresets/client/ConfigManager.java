@@ -28,6 +28,18 @@ public class ConfigManager {
             config = createDefaultConfig();
             save();
         }
+
+        // 从 URL 加载服务器列表
+        if (config.isEnableRemote() && config.getRemoteUrl() != null && !config.getRemoteUrl().isEmpty()) {
+            List<PresetServer> remoteServers = ServerListLoader.loadFromUrl(config.getRemoteUrl());
+            if (!remoteServers.isEmpty()) {
+                // 合并远程服务器列表和本地列表
+                List<PresetServer> allServers = new ArrayList<>(config.getPresetServers());
+                allServers.addAll(remoteServers);
+                config.setPresetServers(allServers);
+                System.out.println("Merged local and remote server lists. Total: " + allServers.size());
+            }
+        }
     }
 
     public static void save() {
@@ -58,6 +70,8 @@ public class ConfigManager {
 
     public static class Config {
         private List<PresetServer> presetServers = new ArrayList<>();
+        private String remoteUrl = "";
+        private boolean enableRemote = false;
 
         public List<PresetServer> getPresetServers() {
             return presetServers;
@@ -65,6 +79,14 @@ public class ConfigManager {
 
         public void setPresetServers(List<PresetServer> presetServers) {
             this.presetServers = presetServers;
+        }
+
+        public String getRemoteUrl() {
+            return remoteUrl;
+        }
+
+        public boolean isEnableRemote() {
+            return enableRemote;
         }
     }
 }
